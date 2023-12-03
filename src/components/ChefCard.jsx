@@ -15,7 +15,7 @@ const ChefCard = ({chef}) => {
                     </div>
                    <div className="flex items-center">
                         <BiLike className="w-5 h-5" />
-                        <p className="ml-2">: {chef.likesCount}</p>
+                        <p className="ml-2"> : {chef.likesCount}</p>
                    </div>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">View Recipes</button>
