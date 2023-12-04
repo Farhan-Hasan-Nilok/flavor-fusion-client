@@ -10,7 +10,7 @@ const Home = () => {
     const chefs = useLoaderData();
 
     useEffect(() => {
-        fetch('http://localhost:3000/reviews')
+        fetch('https://flavor-fusion-server-alpha.vercel.app/reviews')
         .then(res => res.json())
         .then(data => setReviews(data))
     }, [])
@@ -34,6 +34,30 @@ const Home = () => {
                         reviews.map(review => <Review key={review.id} review={review}/>)
                     }
                 </Marquee>
+            </div>
+
+            <div>
+                <p className="text-center text-2xl mb-8 mt-2">Menu</p>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 place-items-center mb-10">
+                    <ol type="1">
+                        <li>Risotto</li>
+                        <li>Pizza</li>
+                        <li>Pasta</li>
+                        <li>Gnotti</li>
+                    </ol>
+                    <ol type="1">
+                        <li>Spagetti</li>
+                        <li>Steak</li>
+                        <li>Polenta</li>
+                        <li>Lasagne</li>
+                    </ol>
+                    <ol type="1">
+                        <li>Gelato</li>
+                        <li>Pizza</li>
+                        <li>Pasta</li>
+                        <li>Gnotti</li>
+                    </ol>
+                </div>
             </div>
         </div>
     );

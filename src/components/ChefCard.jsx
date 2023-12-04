@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { BiLike } from "react-icons/bi";
 import { TbSoup } from "react-icons/tb";
+import { Link } from "react-router-dom";
 const ChefCard = ({chef}) => {
     return (
         <div>
@@ -18,7 +19,7 @@ const ChefCard = ({chef}) => {
                         <p className="ml-2"> : {chef.likesCount}</p>
                    </div>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">View Recipes</button>
+                        <Link to={`/chef/${chef.id}`} className="btn btn-primary">View Recipes</Link>
                     </div>
                 </div>
             </div>
