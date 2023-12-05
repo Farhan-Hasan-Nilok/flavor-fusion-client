@@ -5,10 +5,11 @@ import ChefCard from "../components/ChefCard.jsx";
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import Review from "../components/Review.jsx";
+import useTitle from "../hooks/useTitle.js";
 const Home = () => {
     const [reviews, setReviews] = useState([]);
     const chefs = useLoaderData();
-
+    useTitle('Home')
     useEffect(() => {
         fetch('https://flavor-fusion-server-alpha.vercel.app/reviews')
         .then(res => res.json())

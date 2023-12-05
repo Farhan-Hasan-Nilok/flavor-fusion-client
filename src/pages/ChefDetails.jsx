@@ -2,8 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import { BiLike } from "react-icons/bi";
 import { TbSoup } from "react-icons/tb";
 import Recipes from "../components/Recipes";
+import useTitle from "../hooks/useTitle";
 const ChefDetails = () => {
     const chefData = useLoaderData();
+    useTitle('Chef')
     return (
         <div>
             {/* chef image */}

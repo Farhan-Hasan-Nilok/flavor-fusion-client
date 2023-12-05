@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
+    useTitle('Login');
     const [showPassword, setPassword] = useState(false);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');

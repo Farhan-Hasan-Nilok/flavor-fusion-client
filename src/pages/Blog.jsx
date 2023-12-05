@@ -1,5 +1,7 @@
 import { usePDF } from 'react-to-pdf';
+import useTitle from '../hooks/useTitle';
 const Blog = () => {
+    useTitle('Blog');
     const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
     return (
         <div className="px-10 py-5">
