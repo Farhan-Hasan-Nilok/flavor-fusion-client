@@ -1,6 +1,14 @@
-import { FaRegUserCircle } from "react-icons/fa"
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/AuthContext";
 const NavBar = () => {
+    const { user, logOut } = useContext(UserContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -17,7 +25,9 @@ const NavBar = () => {
                                 <Link to='blog'>Blog</Link>
                             </li>
                             <li>
-                                <Link to='/login'>Login</Link>
+                                {
+                                    user && <button onClick={handleLogOut}>Logout</button>
+                                }
                             </li>
                         </ul>
                     </div>
@@ -29,11 +39,19 @@ const NavBar = () => {
                         <li>
                             <Link to='blog'>Blog</Link>
                         </li>
-                        <li><Link to='/login'>Login</Link></li>
+                        <li>
+                           {
+                                user && <button onClick={handleLogOut}>Logout</button>
+                           }
+                        </li>
+                        
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <FaRegUserCircle className="w-8 h-8"/>
+                    {
+                        user?.photoURL ? <img src={user.photoURL} alt="" className="w-8 h-8 rounded-full" title={user.displayName}/>
+                            : <Link to='/login' className="btn">Login</Link>
+                    }
                 </div>
             </div>
         </div>

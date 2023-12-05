@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 
 const Signup = () => {
@@ -9,12 +9,18 @@ const Signup = () => {
     const [error, setError] = useState('');
 
     const { googleSignIn, createUser, updateUserInfo } = useContext(UserContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname;
 
     const handleGoogleSignIn = () =>{
         setSuccess('');
         setError('');
         googleSignIn()
-            .then(res => setSuccess('Registration Successfull !'))
+            .then(res => {
+                setSuccess('Registration Successfull !');
+                navigate(from, {replace: true});
+            })
             .catch(err => setError(err.message))
     }
 
@@ -31,6 +37,8 @@ const Signup = () => {
         .then(res => {
             setSuccess('Email registration successfull');
             updateUserInfo(name, photoURL);
+            navigate(from, { replace: true });
+            form.reset();
         })
         .catch(err => setError(err.message))
     }

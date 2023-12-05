@@ -6,12 +6,14 @@ import Login from "../pages/login";
 import Home from "../pages/Home";
 import Signup from "../pages/Signup";
 import ChefDetails from "../pages/ChefDetails";
-// import MainLayout from "../layout/MainLayout";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/chef/:id',
-                element: <ChefDetails/>,
+                element: <PrivateRoute><ChefDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://flavor-fusion-server-alpha.vercel.app/chef/${params.id}`)
             },
             {
