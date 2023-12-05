@@ -8,6 +8,7 @@ import Signup from "../pages/Signup";
 import ChefDetails from "../pages/ChefDetails";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage";
+import Blog from "../pages/Blog";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><ChefDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://flavor-fusion-server-alpha.vercel.app/chef/${params.id}`)
             },
+
+            {
+                path: 'blog',
+                element: <Blog />
+            },
+
             {
                 path: 'login',
                 element: <Login />
